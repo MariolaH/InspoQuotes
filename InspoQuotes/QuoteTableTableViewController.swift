@@ -3,7 +3,7 @@
 //  InspoQuotes
 //
 //  Created by Mariola Hullings on 4/23/24.
-//
+
 
 import UIKit
 
