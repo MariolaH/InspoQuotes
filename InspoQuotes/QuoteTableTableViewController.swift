@@ -6,11 +6,11 @@
 
 
 import UIKit
+import StoreKit
 
 class QuoteTableTableViewController: UITableViewController {
     
-    @IBAction func restorePressed(_ sender: Any) {
-    }
+    let productIdea = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,5 +54,29 @@ class QuoteTableTableViewController: UITableViewController {
          }
      return cell
      }
+    
+    // MARK: - Table view delegate method
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == quoteToShow.count {
+            print("Buy quotes clicked")
+            buyPremiumQuotes()
+        }
+        //this line of code - when cell is selected it will de-select the cell automatically with a quick animation
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - In-App Purchases Method
+    
+    func buyPremiumQuotes() {
+        if SKPaymentQueue.canMakePayments() {
+            //Can make payments
+        } else {
+            //Can't make payments
+        }
+    }
+    
+    @IBAction func restorePressed(_ sender: UIBarButtonItem) {
+    }
     
 }
