@@ -71,8 +71,11 @@ class QuoteTableTableViewController: UITableViewController {
     func buyPremiumQuotes() {
         if SKPaymentQueue.canMakePayments() {
             //Can make payments
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productIdea
         } else {
             //Can't make payments
+            print("User Can;t make payments")
         }
     }
     
