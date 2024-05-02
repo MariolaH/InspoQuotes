@@ -48,6 +48,7 @@ class QuoteTableTableViewController: UITableViewController {
              cell.textLabel?.text = quoteToShow[indexPath.row]
              cell.textLabel?.numberOfLines = 0
          } else {
+             //if indexPath.row is greater than that number (items in quoteToShow) or equal to 6(which it is due to return quoteToShow.count + 1) than perfom this code block.
              cell.textLabel?.text = "Get More Quotes"
              cell.textLabel?.textColor = .systemTeal
              cell.accessoryType = .disclosureIndicator
@@ -58,8 +59,10 @@ class QuoteTableTableViewController: UITableViewController {
     // MARK: - Table view delegate method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //determines that the last row got clicked
         if indexPath.row == quoteToShow.count {
             print("Buy quotes clicked")
+            //implement the buying of the in-app purchase
             buyPremiumQuotes()
         }
         //this line of code - when cell is selected it will de-select the cell automatically with a quick animation
@@ -75,7 +78,7 @@ class QuoteTableTableViewController: UITableViewController {
             paymentRequest.productIdentifier = productIdea
         } else {
             //Can't make payments
-            print("User Can;t make payments")
+            print("User Can't make payments")
         }
     }
     
