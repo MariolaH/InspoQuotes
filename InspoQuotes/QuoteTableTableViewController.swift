@@ -8,13 +8,14 @@
 import UIKit
 import StoreKit
 
-class QuoteTableTableViewController: UITableViewController {
+class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactionObserver {
     
-    let productIdea = ""
+    let productID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Inspirational Quotes"
+        SKPaymentQueue.default().add(self)
     }
     
     var quoteToShow = [
@@ -74,12 +75,20 @@ class QuoteTableTableViewController: UITableViewController {
     func buyPremiumQuotes() {
         if SKPaymentQueue.canMakePayments() {
             //Can make payments
+            //this block of code implements an in-app purchase
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productIdea
+            paymentRequest.productIdentifier = productID
+            SKPaymentQueue.default().add(paymentRequest)
+           
         } else {
             //Can't make payments
             print("User Can't make payments")
         }
+    }
+    
+    //this delegate method will infrom us when the transactions have been updated in the paymentQue
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
     }
     
     @IBAction func restorePressed(_ sender: UIBarButtonItem) {
