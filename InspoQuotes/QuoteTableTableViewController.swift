@@ -88,7 +88,15 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
     
     //this delegate method will infrom us when the transactions have been updated in the paymentQue
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+        for transaction in transactions {
+            if transaction.transactionState == .purchased {
+                //User payment successfull
+                print("Transaction Sucessful")
+            } else if transaction.transactionState == .failed {
+                //Payment Failed or cancelled payment
+                print("Transaction Failed")
+            }
+        }
     }
     
     @IBAction func restorePressed(_ sender: UIBarButtonItem) {
