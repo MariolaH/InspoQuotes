@@ -4,13 +4,12 @@
 //
 //  Created by Mariola Hullings on 4/23/24.
 
-
 import UIKit
 import StoreKit
 
 class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactionObserver {
     
-    let productID = ""
+    let productID = "com.MH.InspoQuotes.PremiumQuotes"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +70,11 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
     
     // MARK: - In-App Purchases Method
     
+    //In this function that we are going to trigger the in app-purchase
     func buyPremiumQuotes() {
         if SKPaymentQueue.canMakePayments() {
             //Can make payments
-            //this block of code implements an in-app purchase
+            //Creates an in-app purchase request
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID
             SKPaymentQueue.default().add(paymentRequest)
@@ -85,7 +85,7 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
         }
     }
     
-    //this delegate method will infrom us when the transactions have been updated in the paymentQue
+    //this delegate method will infrom us when the transactions have been updated in the paymentQueue
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             if transaction.transactionState == .purchased {
