@@ -14,6 +14,7 @@
 		87E5E94B2BD2DB2E00D0F658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E5E94A2BD2DB2E00D0F658 /* Assets.xcassets */; };
 		87E5E94E2BD2DB2E00D0F658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E5E94C2BD2DB2E00D0F658 /* LaunchScreen.storyboard */; };
 		87E5E9562BD8325D00D0F658 /* QuoteTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5E9552BD8325D00D0F658 /* QuoteTableTableViewController.swift */; };
+		BA00B6382BFFC180007F572B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA00B6372BFFC180007F572B /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		87E5E94D2BD2DB2E00D0F658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87E5E94F2BD2DB2E00D0F658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E5E9552BD8325D00D0F658 /* QuoteTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableTableViewController.swift; sourceTree = "<group>"; };
+		BA00B6352BFFC162007F572B /* InspoQuotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InspoQuotes.entitlements; sourceTree = "<group>"; };
+		BA00B6372BFFC180007F572B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA00B6382BFFC180007F572B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +48,7 @@
 			children = (
 				87E5E9402BD2DB2D00D0F658 /* InspoQuotes */,
 				87E5E93F2BD2DB2D00D0F658 /* Products */,
+				BA00B6362BFFC180007F572B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +63,7 @@
 		87E5E9402BD2DB2D00D0F658 /* InspoQuotes */ = {
 			isa = PBXGroup;
 			children = (
+				BA00B6352BFFC162007F572B /* InspoQuotes.entitlements */,
 				87E5E9412BD2DB2D00D0F658 /* AppDelegate.swift */,
 				87E5E9432BD2DB2D00D0F658 /* SceneDelegate.swift */,
 				87E5E9452BD2DB2D00D0F658 /* ViewController.swift */,
@@ -68,6 +74,14 @@
 				87E5E94F2BD2DB2E00D0F658 /* Info.plist */,
 			);
 			path = InspoQuotes;
+			sourceTree = "<group>";
+		};
+		BA00B6362BFFC180007F572B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA00B6372BFFC180007F572B /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InspoQuotes/InspoQuotes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LSMF6XRV9N;
@@ -309,7 +324,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DesignMatrixLabs.InspoQuotes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MH.InspoQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -322,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InspoQuotes/InspoQuotes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LSMF6XRV9N;
@@ -337,7 +353,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DesignMatrixLabs.InspoQuotes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MH.InspoQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
