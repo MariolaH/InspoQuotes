@@ -15,6 +15,10 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
         super.viewDidLoad()
         title = "Inspirational Quotes"
         SKPaymentQueue.default().add(self)
+        
+        if isPurchased() {
+            showPremiumQuotes()
+        }
     }
     
     var quoteToShow = [
@@ -38,7 +42,11 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quoteToShow.count + 1
+        if isPurchased() {
+            return quoteToShow.count
+        } else {
+            return quoteToShow.count + 1
+        }
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,6 +54,8 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
          if indexPath.row < quoteToShow.count{
              cell.textLabel?.text = quoteToShow[indexPath.row]
              cell.textLabel?.numberOfLines = 0
+             cell.textLabel?.textColor = .black
+             cell.accessoryType = .none
          } else {
              //if indexPath.row is greater than that number (items in quoteToShow) or equal to 6(which it is due to return quoteToShow.count + 1) than perfom this code block.
              cell.textLabel?.text = "Get More Quotes"
@@ -91,6 +101,8 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
             if transaction.transactionState == .purchased {
                 //User payment successfull
                 print("Transaction Successful!")
+                showPremiumQuotes()
+                UserDefaults.standard.setValue(true, forKey: productID)
                 //ends transcation so not holding onto the same transcation
                 SKPaymentQueue.default().finishTransaction(transaction)
             } else if transaction.transactionState == .failed {
@@ -103,6 +115,22 @@ class QuoteTableTableViewController: UITableViewController,  SKPaymentTransactio
                 //ends transcation so not holding onto the same transcation
                 SKPaymentQueue.default().finishTransaction(transaction)
             }
+        }
+    }
+    
+    func showPremiumQuotes() {
+        quoteToShow.append(contentsOf: premiumQuotes)
+        tableView.reloadData()
+    }
+    
+    func isPurchased() -> Bool {
+        let purchaseStatus = UserDefaults.standard.bool(forKey: productID)
+        if purchaseStatus {
+            print("Previously Purchased")
+            return true
+        } else {
+         print("Never Purchased")
+            return false
         }
     }
     
